@@ -19,3 +19,5 @@
 (global-unset-key (kbd "M-="))  ;; Toogles window between full screen and tiled to half it previously was
 (global-unset-key (kbd "M-]"))  ;; Moves window to right half of screen in chromeos
 (global-unset-key (kbd "M-["))  ;; Moves window to left half of the screen in chromeos
+
+(load-theme 'tango-dark t)
