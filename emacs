@@ -11,6 +11,7 @@
 (global-set-key (kbd "C-S-z") 'redo) ;; set ctrl-shift-Z to redo
 (global-set-key (kbd "C-w") 'kill-buffer) ;; I use Ctrl-backspace or Delete key to delete a word.
 (global-set-key (kbd "C-f") 'isearch-forward) ;; Like most applications
+(define-key isearch-mode-map [(control f)] 'isearch-repeat-forward) ;; Move all isearch features to ctrl-f
 (global-set-key (kbd "C-s") 'save-buffer) ;; Like most applications
 
 ;;
