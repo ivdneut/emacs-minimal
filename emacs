@@ -21,4 +21,4 @@
 (global-unset-key (kbd "M-["))  ;; Moves window to left half of the screen in chromeos
 
 (load-theme 'tango-dark t)
-(tool-bar-mode -1)
+(if window-system (tool-bar-mode -1))
