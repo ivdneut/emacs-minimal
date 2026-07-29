@@ -4,6 +4,8 @@
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 
+(require 'org-tempo)
+
 ;;
 ;; Set custom key bindings.
 ;;
