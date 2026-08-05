@@ -25,6 +25,8 @@
 (global-unset-key (kbd "M-]"))  ;; Moves window to right half of screen in chromeos
 (global-unset-key (kbd "M-["))  ;; Moves window to left half of the screen in chromeos
 
+(delete-selection-mode 1) ;; Allow pasting to overwrite current selection
+
 (load-theme 'tango-dark t)
 (if window-system (tool-bar-mode -1))
 
