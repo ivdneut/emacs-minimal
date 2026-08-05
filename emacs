@@ -21,9 +21,10 @@
 ;;
 ;; Unset some key bindings that just get in the way
 ;;
-(global-unset-key (kbd "M-="))  ;; Toogles window between full screen and tiled to half it previously was
+(global-unset-key (kbd "M-="))  ;; Toggles window between full screen and tiled to half in chromeos
 (global-unset-key (kbd "M-]"))  ;; Moves window to right half of screen in chromeos
 (global-unset-key (kbd "M-["))  ;; Moves window to left half of the screen in chromeos
+(global-unset-key (kbd "C-b"))  ;; Interferes with tmux prefix key
 
 (delete-selection-mode 1) ;; Allow pasting to overwrite current selection
 
@@ -46,3 +47,10 @@
 ;; Use shell-script-mode for .env files
 ;;
 (add-to-list 'auto-mode-alist '("\\.env\\'" . shell-script-mode))
+
+;;
+;; Enable ido mode
+;;
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
