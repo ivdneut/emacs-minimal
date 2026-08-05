@@ -25,3 +25,15 @@
 
 (load-theme 'tango-dark t)
 (if window-system (tool-bar-mode -1))
+
+;;
+;; Set backup directory where backup files are supposed to endup.
+;;
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/tmp/emacs-saves/"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
