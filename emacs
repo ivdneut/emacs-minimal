@@ -15,6 +15,8 @@
 (define-key isearch-mode-map [(control f)] 'isearch-repeat-forward) ;; Move all isearch features to ctrl-f
 (global-set-key (kbd "C-s") 'save-buffer) ;; Like most applications
 (global-set-key (kbd "C-v") 'yank) ;; It's annoying to accidentally paste with C-v and scroll down instead.
+(global-set-key (kbd "C-|") 'split-window-right)
+(global-set-key (kbd "C-=") 'split-window-below)
 
 ;;
 ;; Unset some key bindings that just get in the way
