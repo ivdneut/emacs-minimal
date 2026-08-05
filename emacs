@@ -41,3 +41,8 @@
    kept-new-versions 6
    kept-old-versions 2
    version-control t)       ; use versioned backups
+
+;;
+;; Use shell-script-mode for .env files
+;;
+(add-to-list 'auto-mode-alist '("\\.env\\'" . shell-script-mode))
