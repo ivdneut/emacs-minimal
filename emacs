@@ -27,6 +27,7 @@
 (global-unset-key (kbd "C-b"))  ;; Interferes with tmux prefix key
 
 (delete-selection-mode 1) ;; Allow pasting to overwrite current selection
+(setq scroll-conservatively 101) ;; Smooth scrolling
 
 (load-theme 'tango-dark t)
 (if window-system (tool-bar-mode -1))
