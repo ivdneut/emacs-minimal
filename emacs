@@ -28,9 +28,15 @@
 
 (delete-selection-mode 1) ;; Allow pasting to overwrite current selection
 (setq scroll-conservatively 101) ;; Smooth scrolling
+(setq scroll-step 1)
+(setq scroll-margin 3)
+(global-hl-line-mode 1)
+(electric-pair-mode 1)
 
-(load-theme 'tango-dark t)
-(if window-system (tool-bar-mode -1))
+(when (display-graphic-p)
+    (tool-bar-mode -1)
+    (load-theme 'tango-dark t)
+)
 
 ;;
 ;; Set backup directory where backup files are supposed to endup.
