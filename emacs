@@ -52,8 +52,13 @@
 
 ;;
 ;; Use shell-script-mode for .env files
+;; Use lisp mode for the emacs config file
 ;;
-(add-to-list 'auto-mode-alist '("\\.env\\'" . shell-script-mode))
+(setq auto-mode-alist
+	     (append auto-mode-alist
+	     	     '(("\\.env\\'" . shell-script-mode)
+		       ("emacs\\'" . lisp-mode))
+		       ))
 
 ;;
 ;; Enable ido mode
