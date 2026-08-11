@@ -33,10 +33,16 @@
 (global-hl-line-mode 1)
 (electric-pair-mode 1)
 
-(when (display-graphic-p)
+(defun new-frame-setup (frame)
+  (when (display-graphic-p frame)
+    (message "window system")
     (tool-bar-mode -1)
-    (load-theme 'tango-dark t)
-)
+    (load-theme 'misterioso t)))
+
+;; Run for already-existing frames
+(mapc 'new-frame-setup(frame-list))
+;; Run when a new frame is created
+(add-hook 'after-make-frame-functions 'new-frame-setup)
 
 ;;
 ;; Set backup directory where backup files are supposed to endup.
