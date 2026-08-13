@@ -57,7 +57,7 @@
    version-control t)       ; use versioned backups
 
 ;; (setq undo-tree-auto-save-history nil)
-(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree-history")))
+(setq undo-tree-history-directory-alist '(("." . "~/tmp/.emacs-saves/undo-tree-history")))
 
 ;;
 ;; Use shell-script-mode for .env files
