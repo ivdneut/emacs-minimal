@@ -9,6 +9,7 @@
 ;;
 ;; Set custom key bindings.
 ;;
+(global-set-key [home] 'back-to-indentation)
 (global-set-key (kbd "C-z") 'undo) ;; set ctrl-z to undo, since the normal ctrl-z is useless
 (global-set-key (kbd "C-S-z") 'redo) ;; set ctrl-shift-Z to redo
 (global-set-key (kbd "C-f") 'isearch-forward) ;; Like most applications
