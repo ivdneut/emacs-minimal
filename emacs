@@ -35,6 +35,7 @@
 (setq scroll-step 1)
 (setq scroll-margin 3)
 (global-hl-line-mode 1)
+(set-face-background hl-line-face "slate gray")
 (electric-pair-mode 1)
 
 (defun new-frame-setup (frame)
