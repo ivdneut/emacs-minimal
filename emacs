@@ -42,7 +42,7 @@
   (when (display-graphic-p frame)
     (message "window system")
     (tool-bar-mode -1)
-    (load-theme 'misterioso t)))
+    (load-theme 'modus-operandi t)))
 
 ;; Run for already-existing frames
 (mapc 'new-frame-setup(frame-list))
