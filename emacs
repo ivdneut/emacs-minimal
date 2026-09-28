@@ -86,3 +86,27 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(adoc-mode agda2-mode apache-mode ats2-mode auto-complete bazel
+	       bison-mode bpftrace-mode caml clojure-mode cmake-mode
+	       company csv-mode dart-mode dockerfile-mode dpkg-dev-el
+	       elm-mode fountain-mode git-modes gitattributes-mode
+	       gitconfig-mode gitignore-mode gitlab-ci-mode gnuplot
+	       go-mode graphviz-dot-mode haskell-mode imenu-list
+	       inform-mode jinja2-mode js2-mode kivy-mode kotlin-mode
+	       lua-mode markdown-mode matlab-mode meson-mode
+	       muttrc-mode nginx-mode olivetti paredit php-mode
+	       pip-requirements po-mode pos-tip protobuf-mode
+	       puppet-mode qml-mode racket-mode rust-mode scala-mode
+	       sml-mode systemd undo-tree vala-mode web-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
