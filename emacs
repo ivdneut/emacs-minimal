@@ -38,6 +38,24 @@
 (set-face-background hl-line-face "color-234")
 (electric-pair-mode 1)
 
+;; Install treesitter language grammars.
+(setq treesit-extra-load-path '("~/.emacs.d/tree-sitter" "~/.config/emacs/tree-sitter"))
+(setq treesit-load-name-override-list
+      '((go "libtree-sitter-go" "tree_sitter_go"))) 
+(setq treesit-font-lock-level 4)
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.c\\'" . c-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.cpp\\'" . c++-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.java\\'" . java-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
+
+;; Note: Emacs does not have a built-in 'perl-ts-mode' yet, 
+;; so perl files will still rely on standard perl-mode.
+
+
 (defun new-frame-setup (frame)
   (when (display-graphic-p frame)
     (message "window system")
