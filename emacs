@@ -51,6 +51,10 @@
 (add-to-list 'auto-mode-alist '("\\.java\\'" . java-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.sh\\'" . bash-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.bash\\'" . bash-ts-mode))
+(add-to-list 'auto-mode-alist '("bashrc" . bash-ts-mode))
+(add-to-list 'auto-mode-alist '("bash_profile'" . bash-ts-mode))
 
 ;; Note: Emacs does not have a built-in 'perl-ts-mode' yet, 
 ;; so perl files will still rely on standard perl-mode.
