@@ -55,6 +55,7 @@
 (add-to-list 'auto-mode-alist '("\\.bash\\'" . bash-ts-mode))
 (add-to-list 'auto-mode-alist '("bashrc" . bash-ts-mode))
 (add-to-list 'auto-mode-alist '("bash_profile'" . bash-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.env\\'" . bash-ts-mode))
 
 ;; Note: Emacs does not have a built-in 'perl-ts-mode' yet, 
 ;; so perl files will still rely on standard perl-mode.
@@ -64,7 +65,9 @@
   (when (display-graphic-p frame)
     (message "window system")
     (tool-bar-mode -1)
-    (load-theme 'modus-operandi t)))
+    (load-theme 'modus-operandi t)
+    (modify-frame-parameters frame
+			     '((vertical-scroll-bars . right)))))
 
 ;; Run for already-existing frames
 (mapc 'new-frame-setup(frame-list))
