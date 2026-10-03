@@ -43,6 +43,23 @@
 (setq treesit-load-name-override-list
       '((go "libtree-sitter-go" "tree_sitter_go"))) 
 (setq treesit-font-lock-level 4)
+
+;; Set repo URLs for languages that are not auto detected
+(setq treesit-language-source-alist
+      '((typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")))
+
+(define-derived-mode asm-ts-mode asm-mode "Asm[TS]"
+  "Major mode for editing Assembly code using tree-sitter."
+  (when (treesit-ready-p 'asm)
+    (treesit-parser-create 'asm)
+    ;; Initialize tree-sitter settings
+    (treesit-major-mode-setup)))
+
+(add-to-list 'auto-mode-alist '("\\.s\\'" . asm-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.S\\'" . asm-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.asm\\'" . asm-ts-mode))
+
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c-ts-mode))
@@ -56,6 +73,11 @@
 (add-to-list 'auto-mode-alist '("bashrc" . bash-ts-mode))
 (add-to-list 'auto-mode-alist '("bash_profile'" . bash-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.env\\'" . bash-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.toml\\'" . toml-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . html-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.htm\\'" . html-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . css-ts-mode))
 
 ;; Note: Emacs does not have a built-in 'perl-ts-mode' yet, 
 ;; so perl files will still rely on standard perl-mode.
