@@ -37,6 +37,10 @@
 (global-hl-line-mode 1)
 (set-face-background hl-line-face "color-234")
 (electric-pair-mode 1)
+(ac-config-default)
+(global-auto-complete-mode t)
+
+(add-to-list 'ac-modes 'c-ts-mode)
 
 ;; Install treesitter language grammars.
 (setq treesit-extra-load-path '("~/.emacs.d/tree-sitter" "~/.config/emacs/tree-sitter"))
