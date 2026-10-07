@@ -18,6 +18,10 @@
 (global-set-key (kbd "C-v") 'yank) ;; It's annoying to accidentally paste with C-v and scroll down instead.
 (global-set-key (kbd "C-|") 'split-window-right)
 (global-set-key (kbd "C-=") 'split-window-below)
+;; keypad 5 goes to beginning of file by default if numlock is off. Make it do nothing instead.
+;; need both kp-5 and kp-begin setting because if emacs is running in terminal it inserts 5 in the text.
+(global-set-key (kbd "<kp-5>") 'ignore)
+(global-set-key (kbd "<kp-begin>") 'ignore)
 
 ;;
 ;; Unset some key bindings that just get in the way
