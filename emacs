@@ -121,7 +121,7 @@
 ;;
 (setq auto-mode-alist
 	     (append auto-mode-alist
-	     	     '(("\\.env\\'" . shell-script-mode)
+	     	     ;; '(("\\.env\\'" . shell-script-mode)
 		       ("emacs\\'" . lisp-mode))
 		       ))
 
