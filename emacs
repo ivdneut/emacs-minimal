@@ -130,9 +130,10 @@
                            ;; (setq indent-tabs-mode nil) ; use spaces to indent
                            (electric-indent-mode -1) ; indentation in asm-mode is annoying
                            (setq tab-stop-list (number-sequence 4 12 40 ))))
-(add-hook 'c-ts-mode-hook 'eglot-ensure)
-(add-hook 'c++-ts-mode-hook 'eglot-ensure)
-
+;; (add-hook 'c-ts-mode-hook 'eglot-ensure)
+;; (add-hook 'c++-ts-mode-hook 'eglot-ensure)
+(use-package eglot
+    :hook (prog-mode . eglot-ensure))
 ;;
 ;; Enable ido mode
 ;;
