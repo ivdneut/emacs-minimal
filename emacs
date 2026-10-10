@@ -76,7 +76,7 @@
 (add-to-list 'auto-mode-alist '("\\.bash\\'" . bash-ts-mode))
 (add-to-list 'auto-mode-alist '("bashrc" . bash-ts-mode))
 (add-to-list 'auto-mode-alist '("bash_profile'" . bash-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.env\\'" . bash-ts-mode))
+;; (add-to-list 'auto-mode-alist '("\\.env\\'" . bash-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.toml\\'" . toml-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . html-ts-mode))
@@ -121,7 +121,7 @@
 ;;
 (setq auto-mode-alist
 	     (append auto-mode-alist
-	     	     ;; '(("\\.env\\'" . shell-script-mode)
+		      '(("\\.env\\'" . shell-script-mode)
 		       ("emacs\\'" . lisp-mode))
 		       ))
 
@@ -130,6 +130,8 @@
                            ;; (setq indent-tabs-mode nil) ; use spaces to indent
                            (electric-indent-mode -1) ; indentation in asm-mode is annoying
                            (setq tab-stop-list (number-sequence 4 12 40 ))))
+(add-hook 'c-ts-mode-hook 'eglot-ensure)
+(add-hook 'c++-ts-mode-hook 'eglot-ensure)
 
 ;;
 ;; Enable ido mode
