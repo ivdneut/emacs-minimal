@@ -86,6 +86,15 @@
 ;; Note: Emacs does not have a built-in 'perl-ts-mode' yet, 
 ;; so perl files will still rely on standard perl-mode.
 
+(use-package corfu
+  :ensure t
+  ;; Optional: Enable Corfu globally for all buffers
+  :init
+  (global-corfu-mode)
+  :custom
+  (corfu-auto t)                 ;; Enable auto-completion popups
+  (corfu-auto-delay 0.1)         ;; Optional: speed up popup rendering
+  (corfu-auto-prefix 2))         ;; Optional: trigger after typing 2 characters
 
 (defun new-frame-setup (frame)
   (when (display-graphic-p frame)
