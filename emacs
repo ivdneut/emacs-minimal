@@ -41,10 +41,6 @@
 (global-hl-line-mode 1)
 (set-face-background hl-line-face "color-234")
 (electric-pair-mode 1)
-(ac-config-default)
-(global-auto-complete-mode t)
-
-(add-to-list 'ac-modes 'c-ts-mode)
 
 ;; Install treesitter language grammars.
 (setq treesit-extra-load-path '("~/.emacs.d/tree-sitter" "~/.config/emacs/tree-sitter"))
@@ -159,7 +155,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(adoc-mode agda2-mode apache-mode ats2-mode auto-complete bazel
+   '(adoc-mode agda2-mode apache-mode ats2-mode bazel
 	       bison-mode bpftrace-mode caml clojure-mode cmake-mode
 	       company csv-mode dart-mode dockerfile-mode dpkg-dev-el
 	       elm-mode fountain-mode git-modes gitattributes-mode
