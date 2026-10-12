@@ -18,6 +18,10 @@
 (global-set-key (kbd "C-v") 'yank) ;; It's annoying to accidentally paste with C-v and scroll down instead.
 (global-set-key (kbd "C-|") 'split-window-right)
 (global-set-key (kbd "C-=") 'split-window-below)
+;; keypad 5 goes to beginning of file by default if numlock is off. Make it do nothing instead.
+;; need both kp-5 and kp-begin setting because if emacs is running in terminal it inserts 5 in the text.
+(global-set-key (kbd "<kp-5>") 'ignore)
+(global-set-key (kbd "<kp-begin>") 'ignore)
 
 ;;
 ;; Unset some key bindings that just get in the way
@@ -47,6 +51,23 @@
 (setq treesit-load-name-override-list
       '((go "libtree-sitter-go" "tree_sitter_go"))) 
 (setq treesit-font-lock-level 4)
+
+;; Set repo URLs for languages that are not auto detected
+(setq treesit-language-source-alist
+      '((typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")))
+
+(define-derived-mode asm-ts-mode asm-mode "Asm[TS]"
+  "Major mode for editing Assembly code using tree-sitter."
+  (when (treesit-ready-p 'asm)
+    (treesit-parser-create 'asm)
+    ;; Initialize tree-sitter settings
+    (treesit-major-mode-setup)))
+
+(add-to-list 'auto-mode-alist '("\\.s\\'" . asm-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.S\\'" . asm-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.asm\\'" . asm-ts-mode))
+
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
 (add-to-list 'auto-mode-alist '("\\.c\\'" . c-ts-mode))
@@ -59,11 +80,25 @@
 (add-to-list 'auto-mode-alist '("\\.bash\\'" . bash-ts-mode))
 (add-to-list 'auto-mode-alist '("bashrc" . bash-ts-mode))
 (add-to-list 'auto-mode-alist '("bash_profile'" . bash-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.env\\'" . bash-ts-mode))
+;; (add-to-list 'auto-mode-alist '("\\.env\\'" . bash-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.toml\\'" . toml-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . html-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.htm\\'" . html-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . css-ts-mode))
 
 ;; Note: Emacs does not have a built-in 'perl-ts-mode' yet, 
 ;; so perl files will still rely on standard perl-mode.
 
+(use-package corfu
+  :ensure t
+  ;; Optional: Enable Corfu globally for all buffers
+  :init
+  (global-corfu-mode)
+  :custom
+  (corfu-auto t)                 ;; Enable auto-completion popups
+  (corfu-auto-delay 0.1)         ;; Optional: speed up popup rendering
+  (corfu-auto-prefix 2))         ;; Optional: trigger after typing 2 characters
 
 (defun new-frame-setup (frame)
   (when (display-graphic-p frame)
@@ -99,7 +134,7 @@
 ;;
 (setq auto-mode-alist
 	     (append auto-mode-alist
-	     	     '(("\\.env\\'" . shell-script-mode)
+		      '(("\\.env\\'" . shell-script-mode)
 		       ("emacs\\'" . lisp-mode))
 		       ))
 
@@ -108,7 +143,10 @@
                            ;; (setq indent-tabs-mode nil) ; use spaces to indent
                            (electric-indent-mode -1) ; indentation in asm-mode is annoying
                            (setq tab-stop-list (number-sequence 4 12 40 ))))
-
+;; (add-hook 'c-ts-mode-hook 'eglot-ensure)
+;; (add-hook 'c++-ts-mode-hook 'eglot-ensure)
+(use-package eglot
+    :hook (prog-mode . eglot-ensure))
 ;;
 ;; Enable ido mode
 ;;
