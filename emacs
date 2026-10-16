@@ -1,9 +1,6 @@
 (require 'package)
 (package-initialize)
 
-(require 'undo-tree)
-(global-undo-tree-mode 1)
-
 (require 'org-tempo)
 
 ;;
@@ -32,8 +29,7 @@
 (global-unset-key (kbd "M-["))  ;; Moves window to left half of the screen in chromeos
 (global-unset-key (kbd "C-b"))  ;; Interferes with tmux prefix key
 ;; C-/ comments lines in VSCode. Can't be rebound in Emacs, so just disable.
-(with-eval-after-load 'undo-tree		   ;; undo-tree overrides the mapping, so wait until loaded
-  (define-key undo-tree-map (kbd "C-/") #'ignore)) ;; Setting to nil doesn't work, need to explicitly ignore.
+(global-unset-key (kbd "C-/"))
 
 (delete-selection-mode 1) ;; Allow pasting to overwrite current selection
 (setq scroll-conservatively 101) ;; Smooth scrolling
