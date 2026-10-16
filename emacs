@@ -22,6 +22,7 @@
 ;; need both kp-5 and kp-begin setting because if emacs is running in terminal it inserts 5 in the text.
 (global-set-key (kbd "<kp-5>") 'ignore)
 (global-set-key (kbd "<kp-begin>") 'ignore)
+(global-set-key (kbd "C-S-q") 'save-buffers-kill-emacs)
 
 ;;
 ;; Unset some key bindings that just get in the way
