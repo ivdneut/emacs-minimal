@@ -144,8 +144,9 @@
                            ;; (setq indent-tabs-mode nil) ; use spaces to indent
                            (electric-indent-mode -1) ; indentation in asm-mode is annoying
                            (setq tab-stop-list (number-sequence 4 12 40 ))))
-;; (add-hook 'c-ts-mode-hook 'eglot-ensure)
-;; (add-hook 'c++-ts-mode-hook 'eglot-ensure)
+;; Show colors in compilation output
+(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+
 (use-package eglot
     :hook (prog-mode . eglot-ensure))
 ;;
