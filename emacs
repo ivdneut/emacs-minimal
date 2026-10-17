@@ -31,6 +31,12 @@
 ;; C-/ comments lines in VSCode. Can't be rebound in Emacs, so just disable.
 (global-unset-key (kbd "C-/"))
 
+(defun my-inhibit-startup-screen-always ()
+  "Startup screen inhibitor for `command-line-functions`.
+Inhibits startup screen on the first unrecognised option."
+  (ignore (setq inhibit-startup-screen t)))
+(add-hook 'command-line-functions #'my-inhibit-startup-screen-always)
+
 (delete-selection-mode 1) ;; Allow pasting to overwrite current selection
 (setq scroll-conservatively 101) ;; Smooth scrolling
 (setq scroll-step 1)
