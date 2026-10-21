@@ -154,7 +154,13 @@ Inhibits startup screen on the first unrecognised option."
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
 (use-package eglot
-    :hook (prog-mode . eglot-ensure))
+  :hook ((python-mode . eglot-ensure)
+         (c-ts-mode . eglot-ensure)
+         (c++-ts-mode . eglot-ensure)
+         (python-ts-mode . eglot-ensure)
+         (typescript-ts-mode . eglot-ensure)
+	 (java-ts-mode . eglot-ensure)))
+
 ;;
 ;; Enable ido mode
 ;;
