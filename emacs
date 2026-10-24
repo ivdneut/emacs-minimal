@@ -20,6 +20,7 @@
 (global-set-key (kbd "<kp-5>") 'ignore)
 (global-set-key (kbd "<kp-begin>") 'ignore)
 (global-set-key (kbd "C-S-q") 'save-buffers-kill-emacs)
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;;
 ;; Unset some key bindings that just get in the way
@@ -112,6 +113,10 @@ Inhibits startup screen on the first unrecognised option."
 (use-package corfu-terminal
     :if (not (display-graphic-p))
     :ensure t
+    :bind (:map corfu-map
+		("<escape>" . corfu-quit))
+    :custom
+    (corfu-quit-no-match t)
     :config
     (corfu-terminal-mode +1))
 
