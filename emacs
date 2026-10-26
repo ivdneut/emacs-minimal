@@ -53,6 +53,9 @@ Inhibits startup screen on the first unrecognised option."
       '((go "libtree-sitter-go" "tree_sitter_go"))) 
 (setq treesit-font-lock-level 4)
 
+;; Repositories for tree-sitter grammars:
+;; https://github.com/emacs-tree-sitter/tree-sitter-langs/tree/master/repos
+;;
 ;; Set repo URLs for languages that are not auto detected
 (setq treesit-language-source-alist
       '((typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
@@ -149,6 +152,10 @@ Inhibits startup screen on the first unrecognised option."
 		      '(("\\.env\\'" . shell-script-mode)
 		       ("emacs\\'" . lisp-mode))
 		       ))
+
+(use-package racket-mode
+    :mode (("\.rkt\'" . racket-hash-lang-mode))
+    :config (define-key racket-mode-map (kbd "<f7>") 'racket-run-with-debugging))
 
 (require 'asm-mode)
 (add-hook 'asm-mode-hook (lambda ()
