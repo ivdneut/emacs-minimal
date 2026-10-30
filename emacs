@@ -19,7 +19,7 @@
 ;; need both kp-5 and kp-begin setting because if emacs is running in terminal it inserts 5 in the text.
 (global-set-key (kbd "<kp-5>") 'ignore)
 (global-set-key (kbd "<kp-begin>") 'ignore)
-(global-set-key (kbd "C-S-q") 'save-buffers-kill-emacs)
+(global-set-key (kbd "C-c Q") 'save-buffers-kill-emacs) ;; Quit the emacs daemon also
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 ;;
@@ -95,14 +95,19 @@ Inhibits startup screen on the first unrecognised option."
 ;; so perl files will still rely on standard perl-mode.
 
 (use-package corfu
-  :ensure t
-  ;; Optional: Enable Corfu globally for all buffers
-  :init
-  (global-corfu-mode)
-  :custom
-  (corfu-auto t)                 ;; Enable auto-completion popups
-  (corfu-auto-delay 0.1)         ;; Optional: speed up popup rendering
-  (corfu-auto-prefix 2))         ;; Optional: trigger after typing 2 characters
+    :ensure t
+    ;; Optional: Enable Corfu globally for all buffers
+    :init
+    (global-corfu-mode)
+    :custom
+    (corfu-auto t)                 ;; Enable auto-completion popups
+    (corfu-auto-delay 0.1)         ;; Optional: speed up popup rendering
+    (corfu-auto-prefix 2)         ;; Optional: trigger after typing 2 characters
+    :config
+    (keymap-set corfu-map "RET" `(menu-item "" nil :filter
+					    ,(lambda (&optional _)
+					       (and (derived-mode-p 'eshell-mode 'comint-mode)
+						    #'corfu-send)))))
 
 (defun new-frame-setup (frame)
   (when (display-graphic-p frame)
@@ -121,7 +126,8 @@ Inhibits startup screen on the first unrecognised option."
     :custom
     (corfu-quit-no-match t)
     :config
-    (corfu-terminal-mode +1))
+    (corfu-terminal-mode +1)
+    )
 
 ;; Run for already-existing frames
 (mapc 'new-frame-setup(frame-list))
