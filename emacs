@@ -177,7 +177,10 @@ Inhibits startup screen on the first unrecognised option."
          (c++-ts-mode . eglot-ensure)
          (python-ts-mode . eglot-ensure)
          (typescript-ts-mode . eglot-ensure)
-	 (java-ts-mode . eglot-ensure)))
+	 (java-ts-mode . eglot-ensure))
+  :bind (:map eglot-mode-map
+	      ("<f2>" . eglot-rename)
+	      ("<f12>" . xref-find-definitions)))
 
 ;;
 ;; Enable ido mode
